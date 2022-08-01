@@ -1,0 +1,686 @@
+1- Write a vhdl to implement AND gate
+Library IEEE;
+    use IEEE.std_logic_1164.all;
+    entity AND_gate is
+        port(A: in std_logic;
+             B: in std_logic;
+             Y: out std_logic);
+         end AND_gate;
+         architecture and logic of AND_gate is
+             begin
+                 Y<= A and B;
+             end and logic;
+
+2- Write a vhdl to implement or gate
+
+Library IEEE;
+    use IEEE.std_logic_1164.all;
+    entity OR_gate is
+        port(A: in std_logic;
+             B: in std_logic;
+             Y: out std_logic);
+         end OR_gate;
+         architecture OR_gate logic of OR_gate is
+             begin
+                 Y<= A and B;
+             end and logic;
+
+3- Write a vhdl to implement not gate
+   Library IEEE;
+    use IEEE.std_logic_1164.all;
+    entity NOT_gate is
+        port(A: in std_logic;
+             Y: out std_logic);
+         end NOT_gate;
+         architecture NOT logic if NOT_gate is
+             begin
+                 Y<= NOT(A);
+             end NOT logic;
+
+4- Write a vhdl to implement NAND gate
+Library IEEE;
+    use IEEE.std_logic_1164.all;
+    entity NAND_gate is
+        port(A: in std_logic;
+             B: in std_logic;
+             Y: out std_logic);
+         end NAND_gate;
+         architecture NAND logic of NAND_gate is
+             begin
+                 Y<= A NAND B;
+             end NAND logic;
+5- Write a vhdl to implement NOR gate
+
+Library IEEE;
+    use IEEE.std_logic_1164.all;
+    entity NOR_gate is
+        port(A: in std_logic;
+             B: in std_logic;
+             Y: out std_logic);
+         end NOR_gate;
+         architecture NOR logic of NOR_gate is
+             begin
+                 Y<= A NOR B;
+             end NOR logic;
+
+6- Write a vhdl to implement XOR gate
+Library IEEE;
+    use IEEE.std_logic_1164.all;
+    entity XOR_gate is
+        port(A: in std_logic;
+             B: in std_logic;
+             Y: out std_logic);
+         end XOR_gate;
+         architecture XOR logic of XOR_gate is
+             begin
+                 Y<= A XOR B;
+             end XOR logic;
+
+7- Write a vhdl to implement XNOR gate
+Library IEEE;
+    use IEEE.std_logic_1164.all;
+    entity XNOR_gate is
+        port(A: in std_logic;
+             B: in std_logic;
+             Y: out std_logic);
+         end XNOR_gate;
+         architecture XNOR logic of XNOR_gate is
+             begin
+                 Y<= A XNOR B;
+             end XNOR logic;
+
+8- Write a vhdl to implement half adder
+Library IEEE;
+    use IEEE.std_logic_1164.all;
+    entity half_adder is
+        port(A: in bit;
+             B: in bit;
+             Y: out bit;
+             X: out bit);
+         end half_adder;
+         architecture data of half_adder is
+             begin
+                 Y<= A XOR B;
+                 X<= A AND B;
+             end data;
+
+9- Write a vhdl to implement full adder
+Library IEEE;
+    use IEEE.std_logic_1164.all;
+    entity full_adder is
+        port(A: in bit;
+             B: in bit;
+             C: in bit;
+             Y: out bit;
+             X: out bit);
+         end full_adder;
+         architecture data of full_adder is
+             begin
+                 Y<= A XOR B XOR C;
+                 X<= ((A AND B)OR(B AND C)OR(A AND C));
+             end data;
+
+10- Write a vhdl to implement half subtractor
+Library IEEE;
+    use IEEE.std_logic_1164.all;
+    entity half_subtractor is
+        port(A: in bit;
+             B: in bit;
+             C: in bit;
+             Y: out bit;
+             X: out bit);
+         end half_subtractor;
+         architecture data of half_subtractor is
+             begin
+                 Y<= A XOR B;
+                 X<= ((notA) AND B);
+             end data;
+
+
+
+
+11- Write a vhdl to implement full subtractor
+Library IEEE;
+    use IEEE.std_logic_1164.all;
+    entity full_subtractor is
+        port(A: in bit;
+             B: in bit;
+             C: in bit;
+             Y: out bit;
+             X: out bit);
+         end full_subtractor;
+         architecture data of full_subtractor is
+             begin
+                 Y<= A XOR B XOR C;
+                 X<= ((B AND C)OR((not A) AND C)OR((not A) AND B));
+             end data;
+
+
+
+ASSIGNMENT 2
+
+1- Write a vhdl to implement 2:1 MUX
+Library IEEE;
+    use IEEE.std_logic_1164.all;
+    entity test 2 to 1 mux is
+        port(A: in std_logic;
+             B: in std_logic;
+             S: in std_logic;
+             X: out std_logic);
+         end 2 to 1 mux;
+         architecture behavioral of 2 to 1 mux is
+             begin
+                 Y<= A when S='0' else
+                 B;
+                 end behavioral;
+
+
+
+2- Write a vhdl to implement 4:1 MUX
+Library IEEE;
+    use IEEE.std_logic_1164.all;
+    entity test 4 to 1 mux is
+        port(A: in std_logic;
+             B: in std_logic;
+             C: in std_logic;
+             D: in std_logic;
+             S1: in std_logic;
+             S0: in std_logic;
+             Y: out std_logic);
+         end 4 to 1 mux;
+         architecture behavioral of 4 to 1 mux is
+         Signal S: std_logic_vector(1 down to 0);    
+             begin
+                 S<= S1 & S0;
+             with S select
+                 Y<= A when "00",
+                     B when "01",
+                     C when "10",
+                     D when "11",
+                     'Z' when others;
+                 end behavioral;
+
+3- Write a vhdl to implement 8:1 MUX
+Library IEEE;
+    use IEEE.std_logic_1164.all;
+    use IEEE.std_logic_arith.all;
+    use IEEE.std_logic_unsigned.all;
+    entity test 8 to 1 mux is
+        port(D: in std_logic_vector(7 downto 0);
+             S: in std_logic_vector (2 downto 0);
+             Y: out std_logic);
+         end 8 to 1 mux;
+         architecture behavioral of 8 to 1 mux is  
+             begin
+                 S<= S1 & S0;
+             with S select
+                 Y<= d(0) when S="000"else
+                     d(1) when S="001"else
+                     d(2) when S="010"else
+                     d(3) when S="011"else
+                     d(4) when S="100"else
+                     d(5) when S="101"else
+                     d(6) when S="110"else
+                     d(7);
+                 end behavioral;
+
+
+4- Write a vhdl to implement 16:1 MUX
+Library IEEE;
+    use IEEE.std_logic_1164.all;
+    use IEEE.std_logic_arith.all;
+    use IEEE.std_logic_unsigned.all;
+    entity mux 16 is
+        port(X: in std_logic_vector(15 downto 0);
+             S: in std_logic_vector (3 downto 0);
+             Y: out std_logic);
+         end mux 16;
+         architecture mux of mux 16 is  
+             begin
+                 process (X,S)
+                 begin
+                   if (S="0000")then
+                       Y<= X(0);
+                   else if (S="0001")then
+                            Y<= X(1);
+                    else if (S="0001")then
+                            Y<= X(1);
+                    else if (S="0010")then
+                            Y<= X(2);
+                    else if (S="0011")then
+                            Y<= X(3);
+                    else if (S="0100")then
+                            Y<= X(4);
+                    else if (S="0101")then
+                            Y<= X(5);
+                    else if (S="0110")then
+                            Y<= X(6);
+                    else if (S="0111")then
+                            Y<= X(7);
+                    else if (S="1000")then
+                            Y<= X(8);
+                    else if (S="1001")then
+                            Y<= X(9);
+                    else if (S="1010")then
+                            Y<= X(10);
+                    else if (S="1011")then
+                            Y<= X(11);
+                    else if (S="1100")then
+                            Y<= X(12);
+                    else if (S="1101")then
+                            Y<= X(13);
+                    else if (S="1110")then
+                            Y<= X(14);
+                    else
+                            y<= X(15);
+                end if;
+            end process;
+        end mux;
+
+5- Write a vhdl to implement 1:2 demux
+Library IEEE;
+    use IEEE.std_logic_1164.all;
+    use IEEE.std_logic_arith.all;
+    use IEEE.std_logic_unsigned.all;
+    entity Demux 1 to 2 is
+        port(I: in std_logic;
+             S: in std_logic;
+             01: out std_logic;
+             02: out std_logic);
+         end Demux 1 to 2;
+         architecture dataflow of demux 1 to 2 is
+             begin
+                 01 <=I and (nots);
+                 02 <=I and S;
+             end dataflow;
+
+6- Write a vhdl to implement 1:4 demux
+Library IEEE;
+    use IEEE.std_logic_1164.all;
+    entity Demux_1 to 4 is
+        port(F: in std_logic;
+             S0,S1: in std_logic;
+             A,B,C,D: out std_logic);
+         end Demux 1 to 4;
+         architecture bhv of demux_1 to 4 is
+             begin
+                 if(S0='0' and S1='0')then
+                     A<=F;
+                else if(S0='1' and S1='0')then
+                     B<=F;
+                else if(S0='0' and S1='1')then
+                     C<=F;
+                else
+                     D<=F;
+             end process;
+         end bhv;
+
+
+7- Write a vhdl to implement 1:8 demux
+Library IEEE;
+    use IEEE.std_logic_1164.all;
+    entity Demux_1 to 8 is
+        port(I: in std_logic;
+             S: in std_logic_vector(0 to 2);
+             O: out std_logic_vector(0 to 7));
+         end Demux 1 to 4;
+         architecture demux_arch of demux_1 to 8 is
+             begin
+                 process(I,S)
+                     begin
+                         O<="00000000";
+                         case S is
+                             when "000"=>0(0)<=I;
+                            when "001"=>0(1)<=I;
+                            when "010"=>0(2)<=I;
+                            when "011"=>0(3)<=I;
+                            when "100"=>0(4)<=I;
+                            when "101"=>0(5)<=I;
+                            when "110"=>0(6)<=I;
+                            when "111"=>0(7)<=I;
+                            when others=>0<="00000000";
+                            end case;
+                        end process;
+                    end demux_arch;
+
+
+8- Write a vhdl to implement 1:16 demux
+Library IEEE;
+    use IEEE.std_logic_1164.all;
+    use IEEE.std_logic_1164.all;
+    use IEEE.std_logic_unsigned.all;
+entity Demux 16 is
+        port(X: in std_logic;
+             S: in std_logic_vector(3 downto 0);
+             Y: out std_logic_vector(15 downto 0));
+         end Demux 16;
+         architecture demux of demux 16 is
+             begin
+                 process(X,S)
+                     begin
+                        case S is
+                            when'0000' =>
+                            Y(0)<=X;
+                            when'0001' =>
+                            Y(1)<=X;
+                            when'0010' =>
+                            Y(2)<=X;
+                            when'0011' =>
+                            Y(3)<=X;
+                            when'0100' =>
+                            Y(4)<=X;
+                            when'0101' =>
+                            Y(5)<=X;
+                            when'0110' =>
+                            Y(6)<=X;
+                            when'0111' =>
+                            Y(7)<=X;
+                            when'1000' =>
+                            Y(8)<=X;
+                            when'1001' =>
+                            Y(9)<=X;
+                            when'1010' =>
+                            Y(10)<=X;
+                            when'1100' =>
+                            Y(12)<=X;
+                            when'1011' =>
+                            Y(11)<=X;
+                            when'1101' =>
+                            Y(13)<=X;
+                            when'1110' =>
+                            Y(14)<=X;
+                            when others =>
+                            Y(15)<=X;
+                        end case;
+                    end process;
+                end demux;
+
+9- Write vhdl program 8:3 encoder
+Library IEEE;
+    use IEEE.std_logic_1164.all;
+    entity encoder_8*3 is
+        port(D: in std_logic_vector(7 downto 0);
+             A,B,C: out std_logic);
+         end encoder_8*3;
+         architecture encode_8*3_arch of encoder_8*3 is
+             begin
+                 process(d)
+                     begin
+                         A<=D(4)OR D(5)OR D(6)OR D(7);
+                         B<=D(2)OR D(3)OR D(6)OR D(7);
+                         C<=D(1)OR D(3)OR D(5)OR D(7);
+                     end process;
+                 end encoder_arch;
+10- Write vhdl program 4:2 encoder
+Library IEEE;
+    use IEEE.std_logic_1164.all;
+    entity encoder 2 is
+        port(A: in std_logic_vector(3 downto 0);
+             B: out std_logic_vector(1 downto 0));
+         end encoder 2;
+         architecture bhv of encoder 2 is
+                     begin
+                        B(0)<=a(1) OR a(2)
+                        B(1)<=a(1) OR a(3);
+                    end bhv;
+
+
+11- Write vhdl program 4:2 prioroty encoder
+Library IEEE;
+    use IEEE.std_logic_1164.all;
+    entity priority_encoder is
+        port(I0: in std_logic;
+             I1: in std_logic;
+             I2: in std_logic;
+             I3: in std_logic;
+             I2_not: inout std_logic;
+             out0: out std_logic;
+             out1: out std_logic;
+             out2: out std_logic);
+         end priority_encoder;
+         architecture dataflow of priority_encoder is
+             begin
+                 process(I2)
+                     begin
+                         if I2='0' then
+                             I2_not<='1';
+                             else
+                             I2_not<='0';
+                         end if;
+                     end process;
+                     out2 <= I0 OR I1 OR I2 OR I3;
+                     out1 <= (I1 AND I2_not) OR I3;
+                     out0 <= I2 OR I3;
+                 end Dataflow;
+
+
+
+
+12- Write vhdl program to implement magnitude comparator circuit
+Library IEEE;
+    use IEEE.std_logic_1164.all;
+    entity mag-comp is
+    end mag-comp;
+    architecture beh of mag-comp is
+        component mag-comp
+            port(a,b:in std_logic_vector(3 downto 0);
+                 ag,bg,eq : out std_logic);
+             end component;
+            signal a_s,b_s,eq_s : std_logic_vector (3 downto 0);
+            signal ag_s,bg_s,eq_s: std_logic;
+            begin--beh
+                u1 : mag-comp port map(
+                     a=>a_s,
+                     b=>b_s,
+                     ag=>aq_s,
+                     eq=>eq_s,
+                     bg=>bg_s);
+                    tst_P:process
+                     begin
+                         a_s<="111";
+                         b_s<="0000";
+                         wait for 100ns;
+                         a_s<="1010";
+                         b_s<="1100";
+                         wait for 100ns;
+                         a_s<="1001";
+                         b_s<="0011";
+                         wait for 100ns;
+                         a_s<="1000";
+                         b_s<="1000";
+                         wait for 100ns;
+                     end process;
+                 end beh;
+
+
+
+
+
+
+
+
+
+
+
+
+
+13- Write vhdl program to implement 8bit parity generator
+Library IEEE;
+    use IEEE.std_logic_1164.all;
+    entity parity is
+        port(data: in bit_vector(7 downto 0);
+             even_P,odd_P: out bit);
+         end parity;
+         architecture parity_gen of parity is
+             signal temp: bit_vector(5 downto 0);
+             begin
+                 temp(0)<=data(0) XOR data(1);
+                 temp(1)<=temp(0) XOR data(2);
+                 temp(2)<=temp(1) XOR data(3);
+                 temp(3)<=temp(2) XOR data(4);
+                 temp(4)<=temp(3) XOR data(5);
+                 temp(5)<=temp(4) XOR data(6);
+                 even_P<=temp(5) XOR data(7);
+                 odd_P<=not(temp(5) XOR data(7));
+             end parity_gen;
+14- Write vhdl program to implement 8bit parity cheeker
+Library IEEE;
+    use IEEE.std_logic_1164.all;
+    entity parity_chk is
+        port(data: in bit_vector(7 downto 0);
+             P:in bit;
+             E: out bit);
+         end parity_chk;
+         architecture parity_arch of parity_chk is
+             signal temp: bit_vector(6 downto 0);
+             begin
+                 temp(0)<=data(0) XOR data(1);
+                 temp(1)<=temp(0) XOR data(2);
+                 temp(2)<=temp(1) XOR data(3);
+                 temp(3)<=temp(2) XOR data(4);
+                 temp(4)<=temp(3) XOR data(5);
+                 temp(5)<=temp(4) XOR data(6);
+                 temp(6)<=temp(5) XOR data(7);
+                 E<=P XOR temp(6));
+             end parity_arch;
+
+
+
+
+
+
+
+
+
+15- Write vhdl program to implement SR Flip Flop
+Library IEEE;
+    use IEEE.std_logic_1164.all;
+    entity sr is
+        port(r,s,clk,reset: in std_logic;
+             q: out std_logic);
+         end sr;
+         architecture Behavioral of sr is
+             signal P:std_logic;
+             begin
+                 process(clk,reset)
+                     begin
+                         if(reset='1')then
+                             P<='0';
+                        else if (clk event and clk='1')then
+                             if(r='0' and s='0')then
+                                 P<=P;
+                            else if(r='0' and s='1')then
+                                 P<='0';
+                            else if(r='1' and s='0')then
+                                 P<='1';
+                            else if(r='1' and s='1')then
+                                 P<='-';
+                             end if;
+                         end if;
+                           q<=p;
+                    end process;
+                end Behavioral;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+16- Write vhdl program to implement JK Flip Flop
+Library IEEE;
+    use IEEE.std_logic_1164.all;
+    entity jk is
+        port(j,k,clk,reset: in std_logic;
+             q: out std_logic);
+         end jk;
+         architecture Behavioral of jk is
+             signal S:std_logic;
+             begin
+                 process(clk,reset)
+                     begin
+                         if(reset='1')then
+                             S<='0';
+                        else if (clk event and clk='1')then
+                             if(j='0' and k='0')then
+                                 S<=S;
+                            else if(i='0' and k='1')then
+                                 S<='0';
+                            else if(j='1' and k='0')then
+                                 S<='1';
+                            else if(j='1' and k='1')then
+                                 S<=not S;
+                             end if;
+                         end if;
+                           q<=p;
+                    end process;
+                end Behavioral;
+                 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+17- Write vhdl program to implement D Flip Flop
+Library IEEE;
+    use IEEE.std_logic_1164.all;
+    entity dff is
+        port(d,clk,reset: in std_logic;
+             q: out std_logic);
+         end dff;
+         architecture Behavioral dff is
+             begin
+                 process(clk)
+                     begin
+                         if(clk event and clk='1')then
+                             if(reset='1')then
+                                 q<='0';
+                            else
+                                 q<=d;
+                                 
+                             end if;
+                         end if;
+                    end process;
+                end Behavioral;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
